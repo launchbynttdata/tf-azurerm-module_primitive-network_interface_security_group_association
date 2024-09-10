@@ -29,16 +29,18 @@ func TestNsgAssociation(t *testing.T, ctx types.TestContext) {
 		t.Fatalf("Error creating NIC nic client: %v", err)
 	}
 
-	t.Run("doesNicExist", func(t *testing.T) {
+	t.Run("doesNsgAssociationExist", func(t *testing.T) {
 		resourceGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "resource_group_name")
-		nicName := terraform.Output(t, ctx.TerratestTerraformOptions(), "name")
-		id := terraform.Output(t, ctx.TerratestTerraformOptions(), "id")
+		nicId := terraform.Output(t, ctx.TerratestTerraformOptions(), "nic_id")
+		nicName := terraform.Output(t, ctx.TerratestTerraformOptions(), "nic_name")
+		nsgId := terraform.Output(t, ctx.TerratestTerraformOptions(), "network_security_group_id")
 
 		nic, err := nicClient.Get(context.Background(), resourceGroupName, nicName, nil)
 		if err != nil {
 			t.Fatalf("Error getting NIC nic: %v", err)
 		}
 
-		assert.Equal(t, id, *nic.ID, "NIC ID does not match.")
+		assert.Equal(t, nicId, *nic.ID, "NIC ID does not match.")
+		assert.Equal(t, nsgId, *nic.Interface.Properties.NetworkSecurityGroup.ID, "Expected attached NSG to be %s, but got %s", nsgId, *nic.Interface.Properties.NetworkSecurityGroup.ID)
 	})
 }
