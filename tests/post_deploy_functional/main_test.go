@@ -33,5 +33,5 @@ func TestNsgAssociationModule(t *testing.T) {
 		SetTestConfigFileName(infraTFVarFileNameDefault).
 		Build()
 
-	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestNsgAssociation)
+	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestComposableNsgAssociation)
 }
