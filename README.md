@@ -107,7 +107,7 @@ If `make check` target is successful, developer is good to commit the code to pr
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.77 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.5 |
@@ -119,19 +119,19 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [azurerm_network_interface_security_group_association.network_interface_security_group_association](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface_security_group_association) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_network_interface_id"></a> [network\_interface\_id](#input\_network\_interface\_id) | (Required) The ID of the Network Interface. Changing this forces a new resource to be created. | `string` | n/a | yes |
 | <a name="input_network_security_group_id"></a> [network\_security\_group\_id](#input\_network\_security\_group\_id) | (Required) The ID of the Network Security Group which should be attached to the Network Interface. Changing this forces a new resource to be created. | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_id"></a> [id](#output\_id) | The (Terraform specific) ID of the Association between the Network Interface and the Network Interface. |
 <!-- END_TF_DOCS -->
