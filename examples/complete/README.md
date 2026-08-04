@@ -12,7 +12,7 @@
 ## Modules
 
 | Name | Source | Version |
-| ---- | ------ | ------- |
+|------|--------|---------|
 | <a name="module_network_security_group"></a> [network\_security\_group](#module\_network\_security\_group) | terraform.registry.launch.nttdata.com/module_primitive/network_security_group/azurerm | ~> 1.0 |
 | <a name="module_nic"></a> [nic](#module\_nic) | git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-network_interface.git | feat!/copier-conversion |
 | <a name="module_nsg_association"></a> [nsg\_association](#module\_nsg\_association) | ../.. | n/a |
