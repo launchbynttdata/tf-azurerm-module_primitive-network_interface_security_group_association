@@ -19,9 +19,8 @@ module "nsg_association" {
 
 module "nic" {
 
-  # Temporary git pin: published network_interface v1.0.4 requires TF <= 1.5.5,
-  # incompatible with skeleton CI (TF 1.10.4). Revert to registry after NIC PR #28 merges.
-  source = "git::https://github.com/launchbynttdata/tf-azurerm-module_primitive-network_interface.git?ref=feat!/copier-conversion"
+  source  = "terraform.registry.launch.nttdata.com/module_primitive/network_interface/azurerm"
+  version = "~> 1.0"
 
   name                          = local.nic_name
   location                      = var.location
