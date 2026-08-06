@@ -155,13 +155,6 @@ variable "subnet_prefixes" {
   default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   description = "The address prefix to use for the subnet."
 }
-
-variable "use_for_each" {
-  type        = bool
-  description = "Use `for_each` instead of `count` to create multiple resource instances."
-  nullable    = false
-}
-
 variable "security_rules" {
   type = list(object({
     name                                       = string

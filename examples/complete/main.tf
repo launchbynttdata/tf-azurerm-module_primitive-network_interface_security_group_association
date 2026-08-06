@@ -51,7 +51,7 @@ module "resource_group" {
 
 module "resource_names" {
   source  = "terraform.registry.launch.nttdata.com/module_library/resource_name/launch"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   for_each = var.resource_names_map
 
@@ -67,15 +67,17 @@ module "resource_names" {
 
 module "virtual_network" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/virtual_network/azurerm"
-  version = "~> 1.0"
+  version = "~> 3.0"
 
   vnet_name           = local.virtual_network_name
   vnet_location       = var.location
   resource_group_name = local.resource_group_name
   address_space       = var.address_space
-  subnet_names        = var.subnet_names
-  subnet_prefixes     = var.subnet_prefixes
-  use_for_each        = var.use_for_each
+  subnets = {
+    for idx, name in var.subnet_names : name => {
+      prefix = var.subnet_prefixes[idx]
+    }
+  }
 
   depends_on = [module.resource_group]
 }

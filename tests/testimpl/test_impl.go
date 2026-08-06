@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNsgAssociation(t *testing.T, ctx types.TestContext) {
+func TestComposableNsgAssociation(t *testing.T, ctx types.TestContext) {
 
 	subscriptionID := os.Getenv("ARM_SUBSCRIPTION_ID")
 	if len(subscriptionID) == 0 {
@@ -41,6 +41,6 @@ func TestNsgAssociation(t *testing.T, ctx types.TestContext) {
 		}
 
 		assert.Equal(t, nicId, *nic.ID, "NIC ID does not match.")
-		assert.Equal(t, nsgId, *nic.Interface.Properties.NetworkSecurityGroup.ID, "Expected attached NSG to be %s, but got %s", nsgId, *nic.Interface.Properties.NetworkSecurityGroup.ID)
+		assert.Equal(t, nsgId, *nic.Properties.NetworkSecurityGroup.ID, "Expected attached NSG to be %s, but got %s", nsgId, *nic.Properties.NetworkSecurityGroup.ID)
 	})
 }
