@@ -30,10 +30,10 @@ func TestComposableNsgAssociation(t *testing.T, ctx types.TestContext) {
 	}
 
 	t.Run("doesNsgAssociationExist", func(t *testing.T) {
-		resourceGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "resource_group_name")
-		nicId := terraform.Output(t, ctx.TerratestTerraformOptions(), "nic_id")
-		nicName := terraform.Output(t, ctx.TerratestTerraformOptions(), "nic_name")
-		nsgId := terraform.Output(t, ctx.TerratestTerraformOptions(), "network_security_group_id")
+		resourceGroupName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "resource_group_name")
+		nicId := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "nic_id")
+		nicName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "nic_name")
+		nsgId := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "network_security_group_id")
 
 		nic, err := nicClient.Get(context.Background(), resourceGroupName, nicName, nil)
 		if err != nil {
